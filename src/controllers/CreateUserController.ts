@@ -6,7 +6,7 @@ import { UserExists } from '../use-cases/user-exists-use-case';
 
 export class CreateUserController {
   handle = async (req: Request, res: Response) => {
-    const { name, email, password } = req.body;
+    const { name, email, password, cep } = req.body;
 
     const prismaExistsUserRepository = new PrismaExistsUserRepository();
     const userExistsUseCase = new UserExists(prismaExistsUserRepository);
@@ -24,6 +24,7 @@ export class CreateUserController {
       name,
       email,
       password,
+      cep,
     });
 
     return res.status(201).send();
