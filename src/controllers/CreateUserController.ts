@@ -3,6 +3,7 @@ import { PrismaUserRepository } from '../database/prisma/prisma-userCreate-repos
 import { PrismaExistsUserRepository } from '../database/prisma/prisma-userExists-repository';
 import { UserCreate } from '../use-cases/user-create-use-case';
 import { UserExists } from '../use-cases/user-exists-use-case';
+import bcrypt from 'bcrypt';
 
 export class CreateUserController {
   handle = async (req: Request, res: Response) => {
@@ -17,13 +18,16 @@ export class CreateUserController {
       return res.status(404).send(user);
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const encryptedPassword = await bcrypt.hash(password, salt);
+
     const prismaUserRepository = new PrismaUserRepository();
     const userCreateUseCase = new UserCreate(prismaUserRepository);
 
     await userCreateUseCase.execute({
       name,
       email,
-      password,
+      password: encryptedPassword,
       cep,
     });
 
