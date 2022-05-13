@@ -7,12 +7,12 @@ interface UserCreateRequest {
 }
 
 export class UserCreate {
-  constructor(private userCreateReposiwtory: UserCreateRepository) {}
+  constructor(private userCreateRepository: UserCreateRepository) {}
 
   async execute(request: UserCreateRequest) {
     const { name, email, password } = request;
 
-    await this.userCreateReposiwtory.create({
+    await this.userCreateRepository.create({
       name,
       email,
       password,
