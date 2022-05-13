@@ -5,12 +5,19 @@ import {
 } from '../userSession-repository';
 
 export class PrismaSessionRepository implements UserSessionRepository {
-  async index({ email, password }: UserSessionData) {
-    await prisma.user.findFirst({
+  async index({ email }: UserSessionData) {
+    const user = await prisma.user.findFirst({
       where: {
         email,
-        password,
+      },
+      select: {
+        id: true,
+        password: true,
       },
     });
+
+    if (user != null) {
+      return user;
+    }
   }
 }
