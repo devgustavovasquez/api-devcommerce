@@ -11,12 +11,38 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  name       String   @unique
-  email      String   @unique
+  id         String    @id @default(uuid())
+  name       String    @unique
+  email      String    @unique
   password   String
-  created_at DateTime @default(now())
+  created_at DateTime  @default(now())
   cep        Int
+  products   Product[]
 
   @@map("users")
 }
+
+model Product {
+  id         String   @id @default(uuid())
+  created_at DateTime @default(now())
+  title      String
+  amount     Int      @default(0)
+  price      Float
+  rating     Float    @default(0)
+  rating_qty Int      @default(0)
+  cep        Int
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   String
+
+
+  //  Photo      Photo[]
+
+  @@map("products")
+}
+
+//model Photo {
+//  id         String   @id @default(uuid())
+//  created_at DateTime @default(now())
+//  product    Product  @relation(fields: [productId], references: [id])
+//  productId  String
+//}
