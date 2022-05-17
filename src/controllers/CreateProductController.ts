@@ -4,7 +4,7 @@ import { ProductCreate } from '../use-cases/product-create-use-case';
 
 export class CreateProductController {
   handle = async (req: Request, res: Response) => {
-    const { title, amount, price, cep } = req.body;
+    const { title, amount, price, cep, photos } = req.body;
     const user_id = req.header('user_id');
 
     const prismaProductRepository = new PrismaProductRepository();
@@ -20,6 +20,7 @@ export class CreateProductController {
       price,
       authorId: user_id,
       cep,
+      photos,
     });
 
     return res.status(201).send();

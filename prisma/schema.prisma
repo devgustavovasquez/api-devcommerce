@@ -33,16 +33,7 @@ model Product {
   cep        Int
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String
-
-
-  //  Photo      Photo[]
+  photos     Json
 
   @@map("products")
 }
-
-//model Photo {
-//  id         String   @id @default(uuid())
-//  created_at DateTime @default(now())
-//  product    Product  @relation(fields: [productId], references: [id])
-//  productId  String
-//}

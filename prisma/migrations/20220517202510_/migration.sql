@@ -21,6 +21,7 @@ CREATE TABLE "products" (
     "rating_qty" INTEGER NOT NULL DEFAULT 0,
     "cep" INTEGER NOT NULL,
     "authorId" TEXT NOT NULL,
+    "photos" JSONB NOT NULL,
 
     CONSTRAINT "products_pkey" PRIMARY KEY ("id")
 );

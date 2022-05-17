@@ -5,7 +5,14 @@ import {
 } from '../productCreate-repository';
 
 export class PrismaProductRepository implements ProductCreateRepository {
-  async create({ title, amount, price, authorId, cep }: productCreateData) {
+  async create({
+    title,
+    amount,
+    price,
+    authorId,
+    cep,
+    photos,
+  }: productCreateData) {
     await prisma.product.create({
       data: {
         title,
@@ -13,6 +20,7 @@ export class PrismaProductRepository implements ProductCreateRepository {
         price,
         authorId,
         cep,
+        photos,
       },
     });
   }

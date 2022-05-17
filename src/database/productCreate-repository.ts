@@ -4,6 +4,7 @@ export interface productCreateData {
   price: number;
   authorId: string;
   cep: number;
+  photos: object;
 }
 
 export interface ProductCreateRepository {

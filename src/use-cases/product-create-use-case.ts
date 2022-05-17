@@ -6,13 +6,14 @@ interface ProductCreateRequest {
   price: number;
   authorId: string;
   cep: number;
+  photos: object;
 }
 
 export class ProductCreate {
   constructor(private productCreateRespository: ProductCreateRepository) {}
 
   async execute(request: ProductCreateRequest) {
-    const { title, amount, price, authorId, cep } = request;
+    const { title, amount, price, authorId, cep, photos } = request;
 
     await this.productCreateRespository.create({
       title,
@@ -20,6 +21,7 @@ export class ProductCreate {
       price,
       authorId,
       cep,
+      photos,
     });
   }
 }
