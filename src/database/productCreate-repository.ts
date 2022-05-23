@@ -3,7 +3,6 @@ export interface productCreateData {
   amount: number;
   price: number;
   authorId: string;
-  cep: number;
   photos: object;
 }
 

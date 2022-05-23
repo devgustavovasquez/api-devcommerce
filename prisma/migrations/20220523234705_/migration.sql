@@ -5,7 +5,8 @@ CREATE TABLE "users" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "cep" INTEGER NOT NULL,
+    "adress_city" TEXT NOT NULL,
+    "adress_state" TEXT NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -19,7 +20,6 @@ CREATE TABLE "products" (
     "price" DOUBLE PRECISION NOT NULL,
     "rating" DOUBLE PRECISION NOT NULL DEFAULT 0,
     "rating_qty" INTEGER NOT NULL DEFAULT 0,
-    "cep" INTEGER NOT NULL,
     "authorId" TEXT NOT NULL,
     "photos" JSONB NOT NULL,
 

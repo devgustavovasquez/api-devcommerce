@@ -4,20 +4,22 @@ interface UserCreateRequest {
   name: string;
   email: string;
   password: string;
-  cep: number;
+  adress_city: string;
+  adress_state: string;
 }
 
 export class UserCreate {
   constructor(private userCreateRepository: UserCreateRepository) {}
 
   async execute(request: UserCreateRequest) {
-    const { name, email, password, cep } = request;
+    const { name, email, password, adress_city, adress_state } = request;
 
     await this.userCreateRepository.create({
       name,
       email,
       password,
-      cep,
+      adress_city,
+      adress_state,
     });
   }
 }

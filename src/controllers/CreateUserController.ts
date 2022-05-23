@@ -7,7 +7,7 @@ import bcrypt from 'bcrypt';
 
 export class CreateUserController {
   handle = async (req: Request, res: Response) => {
-    const { name, email, password, cep } = req.body;
+    const { name, email, password, adress_city, adress_state } = req.body;
 
     const prismaExistsUserRepository = new PrismaExistsUserRepository();
     const userExistsUseCase = new UserExists(prismaExistsUserRepository);
@@ -28,7 +28,8 @@ export class CreateUserController {
       name,
       email,
       password: encryptedPassword,
-      cep,
+      adress_city,
+      adress_state,
     });
 
     return res.status(201).send();

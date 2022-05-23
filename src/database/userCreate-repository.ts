@@ -2,7 +2,8 @@ export interface UserCreateData {
   name: string;
   email: string;
   password: string;
-  cep: number;
+  adress_city: string;
+  adress_state: string;
 }
 
 export interface UserCreateRepository {

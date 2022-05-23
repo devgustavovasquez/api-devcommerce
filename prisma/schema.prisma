@@ -11,13 +11,14 @@ datasource db {
 }
 
 model User {
-  id         String    @id @default(uuid())
-  name       String    @unique
-  email      String    @unique
-  password   String
-  created_at DateTime  @default(now())
-  cep        Int
-  products   Product[]
+  id           String    @id @default(uuid())
+  name         String    @unique
+  email        String    @unique
+  password     String
+  created_at   DateTime  @default(now())
+  adress_city  String
+  adress_state String
+  products     Product[]
 
   @@map("users")
 }
@@ -30,7 +31,6 @@ model Product {
   price      Float
   rating     Float    @default(0)
   rating_qty Int      @default(0)
-  cep        Int
   author     User     @relation(fields: [authorId], references: [id])
   authorId   String
   photos     Json
