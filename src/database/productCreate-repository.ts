@@ -1,9 +1,9 @@
 export interface productCreateData {
   title: string;
+  description: string;
   amount: number;
   price: number;
   authorId: string;
-  photos: object;
 }
 
 export interface ProductCreateRepository {
