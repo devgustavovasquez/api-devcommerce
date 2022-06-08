@@ -24,8 +24,8 @@ export class PrismaProductAllsRepository implements ProductIndexAllRepository {
       },
     });
 
-    if (products.length > 0) {
-      return products;
+    if (products.length >= 0) {
+      return products || [];
     }
   }
 }
